@@ -9,7 +9,7 @@ A veces puede ser necesario una pantalla por medio de un servicio que permita re
 
 # Example
 
-'''
+```
 
 File: services.json 
 
@@ -22,6 +22,6 @@ File: services.json
 ]
 
 
-'''
+```
 
 El service.json es un archivo finito con lo cual podemos tenerlo presente de forma sencilla y si esta en otro sistema se pued volcar a disco ya no tiene un tamaño considerablemente alto. Al costo de dar visibilidad al area necesaria. También permite exptender el modelo a mas features o persistencias.
