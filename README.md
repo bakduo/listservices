@@ -5,6 +5,7 @@ A veces puede ser necesario una pantalla por medio de un servicio que permita re
 
 # Summary 
  - [x] permitir listar los servicios como service => publicname => internal name
+ - [x] adiciona control de cambios para seguimiento de update de archivo dinamico.
  - [X] Funciona por medio de template asi como por medio de json response.
 
 # Example

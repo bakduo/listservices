@@ -1,0 +1,42 @@
+{
+  "name": "list-services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV='development' nodemon -i ./public bin/run.ts",
+    "build": "tsc",
+    "start:prod": "NODE_ENV='production' node dist/bin/run.js",
+    "start:pm2docker": "cross-env NODE_ENV='production' pm2-runtime dist/bin/run.js --env production",
+    "test": "cross-env NODE_ENV='development' mocha -r ts-node/register --watch-extensions ts --colors _test_/*.ts --reporter mochawesome --timeout 15000 --exit"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.7",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "pm2": "^5.2.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "@types/config": "^0.0.41",
+    "@types/express": "^4.17.13",
+    "@types/mocha": "^9.1.0",
+    "@types/supertest": "^2.0.11",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "chai": "^4.3.6",
+    "eslint": "^8.9.0",
+    "mochawesome": "^7.1.0",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2",
+    "ts-node": "^10.5.0",
+    "tsc-watch": "^4.6.0",
+    "typescript": "^4.5.5"
+  }
+}
