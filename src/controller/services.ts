@@ -1,9 +1,7 @@
 import {Request, Response, NextFunction} from 'express';
 import { appconfig, appPathPublic, ERRORS_APP } from '../initconfig';
-import { errorType } from '../interfaces';
+import { errorType, IFile, IService } from '../interfaces';
 import { ArchivoJson } from '../util/archivo';
-import { IFile } from '../interfaces/persistence';
-import { IService } from '../interfaces/service';
 
 export class ControllerService {
 
@@ -14,6 +12,7 @@ export class ControllerService {
         this.fileOperator = new ArchivoJson();
 
         this.fileOperator.open(appPathPublic+"/"+appconfig.servicefilename);
+
     }
     
 
@@ -26,8 +25,12 @@ export class ControllerService {
 
        } catch (error:unknown) {
         const errorCode = error as errorType;
-        errorCode.code = ERRORS_APP.archivo.number;
-        errorCode.detail = ERRORS_APP.archivo.detail;
+
+        if (errorCode.detail && errorCode.code){
+            errorCode.code = ERRORS_APP.archivo.code;
+            errorCode.detail = ERRORS_APP.archivo.detail;
+        }
+        
         next(errorCode);
        } 
     }
@@ -43,9 +46,12 @@ export class ControllerService {
 
         } catch (error:unknown) {
             const errorCode = error as errorType;
-            errorCode.code = ERRORS_APP.archivo.number;
-            errorCode.detail = ERRORS_APP.archivo.detail;
+            if (errorCode.detail && errorCode.code){
+                errorCode.code = ERRORS_APP.archivo.code;
+                errorCode.detail = ERRORS_APP.archivo.detail;
+            }
             next(errorCode);
         }
     }
+
 }

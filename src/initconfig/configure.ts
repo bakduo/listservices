@@ -6,7 +6,7 @@ export const appPathPublic = cwd + '/public';
 
 export const ERRORS_APP = {
     'archivo':{
-        number:100,
+        code:100,
         detail:"Archivo no existe"
     }
 }

@@ -1,9 +1,9 @@
-import { IFile } from '../interfaces/persistence';
-import { IService } from '../interfaces/service';
 
 import * as fs from 'fs';
-import { errorType } from '../interfaces';
+import { errorType, IFile, IService } from '../interfaces';
 import { ERRORS_APP } from '../initconfig';
+
+import { EArchivo } from '../exception';
 
 export class ArchivoJson implements IFile<IService>{
 
@@ -27,6 +27,8 @@ export class ArchivoJson implements IFile<IService>{
 
             this.path = path;
 
+            console.log(this.path);
+
             const fileserviceJson = fs.readFileSync(this.path);
 
             this.items = JSON.parse(Buffer.from(fileserviceJson).toString());
@@ -35,9 +37,9 @@ export class ArchivoJson implements IFile<IService>{
     
         } catch (error:unknown) {
             const errorCode = error as errorType;
-            errorCode.code = ERRORS_APP.archivo.number;
+            errorCode.code = ERRORS_APP.archivo.code;
             errorCode.detail = ERRORS_APP.archivo.detail;
-            throw new Error(`Exception: ${errorCode.code} ${errorCode.detail}`);
+            throw new EArchivo(errorCode.detail,errorCode.code);
         }          
     }
 

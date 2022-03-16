@@ -14,6 +14,6 @@ server.on('error', error => {
 process.on('SIGINT', function() {
 
     console.log("Finished");
+    
     process.exit(0);
-
 });

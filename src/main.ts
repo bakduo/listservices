@@ -24,17 +24,16 @@ app.use(routerGlobal);
 //Handler GET 404 for not found
 app.use((req:Request, res:Response)=> {
     return res.status(404).json({message:'Request not found'});
-});
+  });
   
 //Error Handler
 app.use((err:errorType, req:Request, res:Response, next:NextFunction)=> {
 
-    //console.log(err);
 
-    if(err.code === ERRORS_APP.archivo.number){
+    if(err.code === ERRORS_APP.archivo.code){
         return res.status(404).json({message:`${err.code} ${err.detail}`});
     }
     
     return res.status(404).json({message:`${err.message}`});
 
-});  
+});
